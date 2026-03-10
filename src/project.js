@@ -1,11 +1,15 @@
 //@ts-check
 
-import {todo} from "./todo.js";
-
-const project = () => {
+export const project = (() => {
     let todo_array = [];
-    const obj1 = todo;
-    todo_array.push(obj1);
-};
-const check = project();
-console.log(check);
+    
+    const addtodo = (todoData) =>{
+        todo_array.push(todoData);
+        return todo_array;
+        
+    }
+    return {addtodo};
+    
+})();
+//const check = project.addtodo();
+//console.log(check);
