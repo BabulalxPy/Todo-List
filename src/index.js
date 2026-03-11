@@ -8,41 +8,44 @@ import { portfolio } from "./portfolio.js";
 
 console.log("TODO");
 console.log("working tree");
-display.sidebar_fn();
+//display.sidebar_fn();
 //display.content_fn();
 
 const getData = () =>{
-    const todo_rec = display.todo_input_display((todo_data) =>{
-        //console.log(todo_data);
-        const todoObj = todo(
-            todo_data.todo_title,
-            todo_data.todo_desc,
-            todo_data.todo_due,
-            todo_data.todo_priority,
-            todo_data.todo_notes,
-            todo_data.todo_check
-        );
-        console.log(todoObj);
-        const projectdata = project.addtodo(todoObj);
-        console.log(projectdata);
-        const projectdatalist = portfolio.addproject(projectdata);
-        console.log(projectdatalist);
+    
+    //console.log(todoDataFlow);
 
-    });
-    console.log(todo_rec);
-
-    let project_rec = display.project_input_display((project_title_saved) =>{
-        console.log(project_title_saved);
+    const projectDataFlow = display.sidebar_fn((projectname) =>{
+        //console.log(projectname);
         const newProjectObj = {
-            name: project_title_saved,
+            name: projectname,
             tasks: []
         };
-
         const updatedPortfolio = portfolio.addproject(newProjectObj);
-        console.log(updatedPortfolio);
+        //display.content_fn()
+        const todoDataFlow = display.content_fn((todo_data) =>{
+            //console.log(todo_data);
+            const todoObj = todo(
+                todo_data.todo_title,
+                todo_data.todo_desc,
+                todo_data.todo_due,
+                todo_data.todo_priority,
+                todo_data.todo_notes,
+                todo_data.todo_check
+            );
+            //console.log(todoObj);
+            //const projectdata = project.addtodo(todoObj);
+            const projectdata1 = newProjectObj.tasks.push(todoObj);
+            //console.log(projectdata);
+            //const projectdatalist = portfolio.addproject(projectdata);
+            //console.log(projectdatalist);
+            console.log(updatedPortfolio);
 
-    });
-    console.log(project_rec);
+        });
+        console.log(todoDataFlow);
+        console.log(updatedPortfolio);
+    })
+    console.log(projectDataFlow);
 
 };
 getData();

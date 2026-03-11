@@ -5,7 +5,7 @@ const display = (() =>{
     sidebar.classList.add("sidebar");
     const project_title_box = document.createElement("div");
     project_title_box.classList.add("project_title_box");
-    const sidebar_fn = () =>{
+    const sidebar_fn = (projectname) =>{
         
         const default_btn = document.createElement("button");
         default_btn.classList.add("default_btn");
@@ -22,7 +22,7 @@ const display = (() =>{
         newProject_btn.textContent = "New Project";
         newProject_btn.addEventListener("click", () =>{
             //display new project portfolio.js
-            project_input_display();
+            project_input_display(projectname);
 
         });
 
@@ -45,7 +45,7 @@ const display = (() =>{
         
         project_save_btn.addEventListener("click", () =>{
             project_title_saved(ip_project_title.value);
-            content_fn();
+            //content_fn();
             //console.log(project_title_saved);
             project_title_box.innerHTML = "";
         });
@@ -62,14 +62,14 @@ const display = (() =>{
     let todo_ip_box = document.createElement("div");
     todo_ip_box.classList.add("todoipbox");
 
-    const content_fn = () =>{
+    const content_fn = (todoData) =>{
         content.innerHTML = "";
         const new_todo_btn = document.createElement("button");
         new_todo_btn.classList.add("new_todo_btn");
         new_todo_btn.textContent = "+";
         new_todo_btn.addEventListener("click", () =>{
             //add todo
-            todo_input_display();
+            todo_input_display(todoData);
         });
         
         content.appendChild(new_todo_btn);
@@ -138,6 +138,7 @@ const display = (() =>{
                 todo_check: ip_checklist.value
             };
             todo_data(allData);
+            todo_ip_box.innerHTML = "";
         });
 
         todo_card.appendChild(title_pre);

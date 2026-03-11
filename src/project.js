@@ -1,9 +1,9 @@
 //@ts-check
 
 export const project = (() => {
-    let todo_array = [];
     
     const addtodo = (todoData) =>{
+        let todo_array = [];
         todo_array.push(todoData);
         return todo_array;
         
