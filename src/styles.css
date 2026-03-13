@@ -32,6 +32,12 @@ button{
     width: 100px;
     height: 80px;
 }
+.projectcard{
+    width: 95px;
+    height: 40px;
+    background-color: blue;
+    color: aliceblue;
+}
 footer{
     font-size: 60px;
     margin-top: 30px;

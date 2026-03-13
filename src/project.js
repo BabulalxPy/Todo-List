@@ -1,15 +1,19 @@
 //@ts-check
 
-export const project = (() => {
+export const createProject = (projectname) => {
+
+    let tasks = [];
     
     const addtodo = (todoData) =>{
-        let todo_array = [];
-        todo_array.push(todoData);
-        return todo_array;
-        
-    }
-    return {addtodo};
+        tasks.push(todoData);
+    };
+
+    return {
+        name: projectname,
+        tasks,
+        addtodo
+    };
     
-})();
+};
 //const check = project.addtodo();
 //console.log(check);

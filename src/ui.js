@@ -5,6 +5,8 @@ const display = (() =>{
     sidebar.classList.add("sidebar");
     const project_title_box = document.createElement("div");
     project_title_box.classList.add("project_title_box");
+    const portfolio_container = document.createElement("div");
+    portfolio_container.classList.add("portfolio_container");
     const sidebar_fn = (projectname) =>{
         
         const default_btn = document.createElement("button");
@@ -48,10 +50,12 @@ const display = (() =>{
             //content_fn();
             //console.log(project_title_saved);
             project_title_box.innerHTML = "";
+        
         });
         project_title_box.appendChild(ip_project_title);
         project_title_box.appendChild(project_save_btn);
         sidebar.appendChild(project_title_box);
+        sidebar.appendChild(portfolio_container);
         //console.log(project_title_saved);
         
 
@@ -61,6 +65,9 @@ const display = (() =>{
     content.classList.add("content");
     let todo_ip_box = document.createElement("div");
     todo_ip_box.classList.add("todoipbox");
+
+    const tododisplay_container = document.createElement("div");
+    tododisplay_container.classList.add("tododisplay");
 
     const content_fn = (todoData) =>{
         content.innerHTML = "";
@@ -74,6 +81,7 @@ const display = (() =>{
         
         content.appendChild(new_todo_btn);
         content.appendChild(todo_ip_box);
+        content.appendChild(tododisplay_container);
         container?.appendChild(content);
     };
 
@@ -157,7 +165,81 @@ const display = (() =>{
         todo_ip_box.appendChild(todo_card);        
     };
 
-    return { sidebar_fn, content_fn, project_input_display, todo_input_display };
+    const displayPortfolio = (projectName) =>{
+
+        const projectsList = document.createElement("div");
+        projectsList.classList.add("projectList");
+
+        projectName.forEach((myProject, index) =>{
+
+            projectsList.innerHTML = "";
+
+            const projectcard = document.createElement("button");
+            projectcard.classList.add("projectcard");
+            projectcard.textContent = myProject.name;
+
+            projectcard.addEventListener("click", () =>{
+                //open todolist of particular project
+            });
+            
+            const removeProject = document.createElement("button");
+            removeProject.classList.add("remove");
+            removeProject.textContent = "Delete";
+            removeProject.addEventListener("click", () =>{
+                //remove the project card from portfolio
+            });
+            projectsList.appendChild(projectcard);
+
+        })
+
+        portfolio_container.appendChild(projectsList);
+    
+    };
+
+    const displayTodolist = (todoData) =>{
+
+        const todolistbox = document.createElement("div");
+        todolistbox.classList.add("todolistbox");
+        
+        todoData.forEach((mytodo, index) =>{
+
+            todolistbox.innerHTML = "";
+
+            const card = document.createElement("div");
+            card.classList.add("card");
+
+            const title_disp = document.createElement("h3");
+            title_disp.textContent = mytodo.title;
+            
+            const desc_disp = document.createElement("p");
+            desc_disp.textContent = mytodo.desc;
+
+            const due_disp = document.createElement("p");
+            due_disp.textContent = mytodo.dueDate;
+
+            const pri_disp = document.createElement("p");
+            pri_disp.textContent = mytodo.priority;
+
+            const notes_disp = document.createElement("p");
+            notes_disp.textContent = mytodo.notes;
+
+            const check_disp = document.createElement("p");
+            check_disp.textContent = mytodo.checklist;
+
+            card.appendChild(title_disp);
+            card.appendChild(desc_disp);
+            card.appendChild(due_disp);
+            card.appendChild(pri_disp);
+            card.appendChild(notes_disp);
+            card.appendChild(check_disp);
+            todolistbox.appendChild(card);
+
+        });
+        tododisplay_container.appendChild(todolistbox);
+        
+    }; 
+
+    return { sidebar_fn, content_fn, project_input_display, todo_input_display, displayPortfolio, displayTodolist };
 })();
 
 export { display };
