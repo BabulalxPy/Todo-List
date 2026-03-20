@@ -6,5 +6,13 @@ export const portfolio = (() =>{
         return project_array;
     }
 
-    return { addproject };
+    const removeproject = (rmproject) =>{
+        project_array = project_array.filter(item => item !== rmproject);
+        return project_array;
+    };
+    const getprojects = () =>{
+        return project_array;
+    };
+
+    return { addproject, removeproject, getprojects };
 })();

@@ -8,10 +8,20 @@ export const createProject = (projectname) => {
         tasks.push(todoData);
     };
 
+    const removetodo = (rmtodoData) =>{
+        const index = tasks.indexOf(rmtodoData);
+        
+        if(index > -1){
+            tasks.splice(index, 1);
+        }
+        return tasks;
+    }
+
     return {
         name: projectname,
         tasks,
-        addtodo
+        addtodo,
+        removetodo
     };
     
 };
